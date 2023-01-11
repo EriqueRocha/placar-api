@@ -1,6 +1,7 @@
 package com.atc.placarApi.dto;
 
 import com.atc.placarApi.model.ResultadoPartida;
+import com.atc.placarApi.model.StatusPartida;
 
 public class NovaPartida {
 
@@ -10,23 +11,10 @@ public class NovaPartida {
     private int pontoTime2;
     private ResultadoPartida resultTime1;
     private ResultadoPartida resultTime2;
-    private ResultadoPartida status;
+    private StatusPartida status;
 
     public NovoTime getTime1() {
         return time1;
-    }
-
-
-    public void setTime1(NovoTime time1) {
-        this.time1 = time1;
-    }
-
-    public NovoTime getTime2() {
-        return time2;
-    }
-
-    public void setTime2(NovoTime time2) {
-        this.time2 = time2;
     }
 
     public int getPontoTime1() {
@@ -45,6 +33,18 @@ public class NovaPartida {
         this.pontoTime2 = pontoTime2;
     }
 
+    public void setTime1(NovoTime time1) {
+        this.time1 = time1;
+    }
+
+    public NovoTime getTime2() {
+        return time2;
+    }
+
+    public void setTime2(NovoTime time2) {
+        this.time2 = time2;
+    }
+
     public ResultadoPartida getResultTime1() {
         return resultTime1;
     }
@@ -61,11 +61,11 @@ public class NovaPartida {
         this.resultTime2 = resultTime2;
     }
 
-    public ResultadoPartida getStatus() {
+    public StatusPartida getStatus() {
         return status;
     }
 
-    public void setStatus(ResultadoPartida status) {
+    public void setStatus(StatusPartida status) {
         this.status = status;
     }
 }

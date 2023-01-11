@@ -18,8 +18,9 @@ public class Partida{
     @ManyToOne(cascade = CascadeType.ALL)
     private Time time2;
 
-    private int pontoTime1;
-    private int pontoTime2;
+    @Embedded
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Placar placar;
 
     @Enumerated(EnumType.STRING)
     private ResultadoPartida resultTime1;
@@ -28,7 +29,7 @@ public class Partida{
     private ResultadoPartida resultTime2;
 
     @Enumerated(EnumType.STRING)
-    private ResultadoPartida status;
+    private StatusPartida status;
 
     public Time getTime1() {
         return time1;
@@ -72,37 +73,29 @@ public class Partida{
     }
 
 
-    public int getPontoTime1() {
-        return pontoTime1;
+    public Placar getPlacar() {
+        return placar;
     }
 
-    public void setPontoTime1(int pontoTime1) {
-        this.pontoTime1 = pontoTime1;
+    public void setPlacar(Placar placar) {
+        this.placar = placar;
     }
 
-    public int getPontoTime2() {
-        return pontoTime2;
-    }
-
-    public void setPontoTime2(int pontoTime2) {
-        this.pontoTime2 = pontoTime2;
-    }
-
-    public ResultadoPartida getStatus() {
+    public StatusPartida getStatus() {
         return status;
     }
 
-    public void setStatus(ResultadoPartida status) {
+    public void setStatus(StatusPartida status) {
         this.status = status;
     }
 
     @Override
     public String toString() {
         return "Partida{" +
-                "time1=" + time1 +
-                ", pontoTime1=" + pontoTime1 +
-                ", time2=" + time2 +
-                ", pontoTime2=" + pontoTime2 +
+                "time1=" + time1.getNome().toString() +
+                ", time2=" + time2.getNome().toString() +
+                ", placar=" + placar +
+                ", status=" + status +
                 '}';
     }
 }

@@ -1,9 +1,19 @@
 package com.atc.placarApi.dto;
 
-public class AtualizarPonto {
 
+public class AtualizarPlacar {
+
+    private Long id;
     private int pontoTime1;
     private int pontoTime2;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public int getPontoTime1() {
         return pontoTime1;
@@ -20,4 +30,6 @@ public class AtualizarPonto {
     public void setPontoTime2(int pontoTime2) {
         this.pontoTime2 = pontoTime2;
     }
+
+
 }

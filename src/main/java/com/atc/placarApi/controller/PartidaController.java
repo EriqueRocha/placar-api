@@ -1,16 +1,13 @@
 package com.atc.placarApi.controller;
 
-import com.atc.placarApi.dto.AtualizarPonto;
+import com.atc.placarApi.dto.AtualizarPlacar;
 import com.atc.placarApi.dto.NovaPartida;
 import com.atc.placarApi.model.Partida;
 import com.atc.placarApi.repository.PartidaRepository;
 import com.atc.placarApi.service.PartidaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,8 +21,7 @@ public class PartidaController {
     @Autowired
     private PartidaService service;
 
-
-    @GetMapping
+    @GetMapping("/ver-partidas")
     public List<Partida> findAll(){
         return repository.findAll();
     }
@@ -35,7 +31,7 @@ public class PartidaController {
         service.save(partida);
     }
 
-    @GetMapping("/editar/{id}")
+    @GetMapping("/ver/{id}")
     public String editarPonto(@PathVariable("id") long id, Model model){
         Optional<Partida> pontoAnterior = repository.findById((int) id);
 
@@ -45,8 +41,16 @@ public class PartidaController {
         return String.valueOf(repository.findById(partida.getId()));
     }
 
-    @PostMapping("/editar/{id}")
-    public void update(@PathVariable("id") long id, AtualizarPonto atualizarPonto){
-        service.update(atualizarPonto);
+    @PutMapping("/placar/editar/{id}")
+    public void update(@RequestBody AtualizarPlacar atualizarPlacar){
+        service.update(atualizarPlacar);
+    }
+
+    @DeleteMapping("/deletar/{id}")
+    public void delete(Integer id){
+        if(repository.existsById(id)){
+            repository.deleteById(id);
+        }
+
     }
 }
